@@ -10,7 +10,7 @@ Route::get('/category-product/{id}',[
     'uses' =>'NewshopController@productCategory',
     'as'   =>'category-product'
 ]);
-Route::get('/product-details/{id}/{name}',[
+Route::get('/product-details/{id}/{name}',[ 
     'uses' =>'NewshopController@productDetails',
     'as'   =>'product-details'
 ]);
@@ -27,7 +27,52 @@ Route::get('/cart/delete/{id}',[
     'uses'=>'CartController@deleteCart',
     'as'   =>'delete-cart-item'
 ]);
+Route::post('/cart/update-cart',[
+    'uses'=>'CartController@UpdateCart',
+    'as'   =>'update-cart'
+]);
+Route::get('/checkout',[
+    'uses'=>'CheckoutController@index',
+    'as'   =>'checkout'
+]);
+Route::post('/customer/registration',[
+    'uses' =>'CheckoutController@customerSignUp',
+    'as'   =>'customer-sign-up'
+]);
+Route::post('/customer/coustomer-login',[
+    'uses' =>'CheckoutController@customerLogin',
+    'as'   =>'coustomer-login'
+]);
+Route::get('/customer/new-coustomer-login',[
+    'uses' =>'CheckoutController@newCustomerLogin',
+    'as'   =>'new-coustomer-login'
+]);
+Route::post('/customer/coustomer-logout',[
+    'uses' =>'CheckoutController@customerLogout',
+    'as'   =>'coustomer-logout'
+]);
+Route::get('/checkout/shipping',[
+    'uses' =>'CheckoutController@shipingForm',
+    'as'   =>'checkout-shiping'
+]);
+Route::post('/shipping/save',[
+    'uses' =>'CheckoutController@shipingInfoSave',
+    'as'   =>'new-shiping'
+]);
+Route::get('/checkout/payment',[
+    'uses' =>'CheckoutController@paymentForm',
+    'as'   =>'checkout-payment'
+]);
 
+Route::post('/checkout/order',[
+    'uses' =>'CheckoutController@newOrder',
+    'as'   =>'new-order'
+]);
+
+Route::get('/complete/order',[
+    'uses' =>'CheckoutController@completeOrder',
+    'as'   =>'complete-order'
+]);
 // Back-end
 
 //Category
@@ -131,6 +176,20 @@ Route::post('/product/update-product',[
 Route::post('/product/delete',[
     'uses' =>'ProductController@deleteProductInfo',
     'as'   =>'delete-product'
+]);
+Route::get('/order/manage-order',[
+    'uses' =>'OrderController@manageOrderInfo',
+    'as'   =>'manage-order'
+]);
+
+Route::get('/order/view-order-details/{id}',[
+    'uses' =>'OrderController@viewOrderInfo',
+    'as'   =>'view-order-details'
+]);
+
+Route::get('/order/invoice-order/{id}',[
+    'uses' =>'OrderController@invoiceOrderInfo',
+    'as'   =>'invoice-order'
 ]);
 //Product End
 

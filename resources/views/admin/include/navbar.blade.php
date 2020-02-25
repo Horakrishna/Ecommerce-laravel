@@ -67,12 +67,12 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
           <i class="fas fa-comments"></i>
-          <span>Comment</span>
+          <span>Order</span>
         </a>
         <div id="collapseFour" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Comment:</h6>
-          <a class="collapse-item" href="#">Manage Comment</a>
+            <h6 class="collapse-header"> Order:</h6>
+          <a class="collapse-item" href="{{route('manage-order')}}">Manage Order</a>
 
           </div>
         </div>

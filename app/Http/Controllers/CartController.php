@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use Cart;
+use Illuminate\Support\Facades\Session;
 
 
 class CartController extends Controller
@@ -13,20 +14,21 @@ class CartController extends Controller
     	
     	$product =Product::find($request->id);
 
-    	Cart::add(array(
-    		'id'        => $rowId ,
-    		'name'      => $product->product_name,
-    		'price'     => $product->product_price,
-    		'quantity'  => $request->quantity,
-    		'attributes' => array(
-					       'image' => $product->product_image
-					    )
-    	));
-
+    	 Cart::add([
+            'id'      => $request->id, 
+            'name'    => $product->product_name,
+            'price'   => $product->product_price,
+            'qty'     => $request->qty,
+            'weight'  => 550, 
+            'options' => [
+                'image' =>$product->product_image
+            ] 
+        ]);
+            
     	return redirect('/cart/show');
     }
     public function showCart(){
-    	$cartProducts =Cart::getContent();
+    	$cartProducts =Cart::Content();
 
     	//return $cartProducts;
     	return view('front-end.cart.show-cart',['cartProducts'=>$cartProducts]);
@@ -34,6 +36,11 @@ class CartController extends Controller
     public function deleteCart($id){
 
     	Cart::remove($id);
-		return redirect('/cart/show-cart');
+		return redirect('/cart/show');
+    }
+
+    public function UpdateCart(Request $request){
+        Cart::update($request->rowId,$request->qty);
+        return redirect('/cart/show')->with('message','Product Quantity update successfully');  
     }
 }

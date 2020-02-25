@@ -6,9 +6,16 @@
 					</div>
 					<div class="top-right">
 					<ul>
-						<li><a href="checkout.html">Checkout</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="registered.html"> Create Account </a></li>
+						<li><a href="{{ route('show-cart') }}">Checkout</a></li>
+						@if(Session::get('coustomerId'))
+						<li><a href="#" onclick="document.getElementById('coustomerLogoutForm').submit();">Log out</a></li>
+							{{Form::open(['route'=>'coustomer-logout','method'=>'post','id'=>'coustomerLogoutForm']) }}
+								
+							{{Form::close()}}
+						@else
+						<li><a href="{{ route('new-coustomer-login') }}">Login</a></li>
+						@endif
+						<li><a href="{{ route('checkout') }}"> Create Account </a></li>
 					</ul>
 					</div>
 					<div class="clearfix"></div>

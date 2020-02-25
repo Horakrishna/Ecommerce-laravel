@@ -773,10 +773,10 @@ a.my-cart-b {
 	border: 2px solid #1565C0;
 }
 .my-cart-b:hover, .my-cart-b:focus, .my-cart-b:active {
-	color: white;
-    background: none;
-    border: 2px solid #1565C0;
-    outline: none !important;
+  color: #000;
+  background: none;
+  border: 2px solid #1565C0;
+  outline: none !important;
 }
 .my-cart-b:hover:before, .my-cart-b:focus:before, .my-cart-b:active:before {
   -webkit-transform: scaleY(1);

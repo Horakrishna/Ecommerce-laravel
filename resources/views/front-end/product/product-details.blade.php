@@ -48,8 +48,8 @@
 									<div class="color-quality">
 										<h6>Quality :</h6>
 											<div class="quantity"> 
-												<input type="number" name="quantity" value="1" min="1"/>
-												<input type="text" name="id" value="{{$product->id}}">
+												<input type="number" name="qty" value="1" min="1"/>
+												<input type="hidden" name="id" value="{{$product->id}}">
 											</div>
 											
 									</div>
